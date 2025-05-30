@@ -1,7 +1,8 @@
-from rest_framework import generics
+# blog/views.py
+from rest_framework import viewsets
 from .models import BlogPost
 from .serializers import BlogPostSerializer
 
-class BlogPostListCreateAPIView(generics.ListCreateAPIView):
-    queryset = BlogPost.objects.all().order_by('-created_at')
+class BlogPostViewSet(viewsets.ModelViewSet):
+    queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
